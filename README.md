@@ -1,7 +1,7 @@
 # EXPERIMENT--04-INTERFACING-AN16X2-LCD-DISPLAY-WITH-ARM AND DISPLAY STRING
-## Name :
-## Roll no :
-## Date of Experiment :
+## Name : GUNASUNDARI B 
+## Roll no : 212224040093
+## Date of Experiment : 2/09/20206
 ## Aim: To Interface a 16X2 LCD display to ARM controller  , and simulate it in Proteus 
 ## Components required: STM32 CUBE IDE, Proteus 8 simulator .
 ## Theory 
@@ -174,17 +174,48 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h" #include "lcd.h"
+
+Lcd_PortType ports[] = {GPIOA,GPIOA,GPIOA,GPIOA}; Lcd_PinType pins[] = {GPIO_PIN_3,GPIO_PIN_2,GPIO_PIN_1,GPIO_PIN_0}; Lcd_HandleTypeDef lcd;
+
+void SystemClock_Config(void); static void MX_GPIO_Init(void);
+
+void lcd_display(void);
+
+int main(void) {
+
+HAL_Init();
+
+SystemClock_Config();
+
+MX_GPIO_Init(); lcd = Lcd_create(ports,pins,GPIOB,GPIO_PIN_0,GPIOB,GPIO_PIN_1,LCD_4_BIT_MODE);
+
+while (1) {
+
+lcd_display();
+} } void lcd_display(){
+
+  Lcd_cursor(&lcd,0,1);
+  Lcd_string(&lcd,"DHANAAAKHAASH S.T \n");
+  Lcd_cursor(&lcd,1,1);
+  Lcd_string(&lcd,"212224240032\n");
+}
+```
 
 
 
 
 ## Output screen shots of proteus  :
- 
- 
+
+<img width="1774" height="919" alt="630896821-e3d0b4c5-051d-4095-a192-0e4d854f639b" src="https://github.com/user-attachments/assets/aa5de9a4-e43d-4fb9-b999-3e8bb50e2c6d" />
+
+ <img width="1687" height="932" alt="630918594-234c4747-4def-46a2-9c6f-f42f1db9c936" src="https://github.com/user-attachments/assets/9d8e1562-9b8c-4ba3-98ae-fa563215cb78" />
+
  ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE): 
  
- 
+<img width="1518" height="1036" alt="630918758-87593e33-fb6c-4b09-9573-3c1bcd6119a3" src="https://github.com/user-attachments/assets/59a8d1eb-c02c-48d0-b1b9-40b56f947190" />
+
+
 ## Result :
 Interfacing a lcd display with ARM microcontroller are simulated in proteus and the results are verified.
-
-
